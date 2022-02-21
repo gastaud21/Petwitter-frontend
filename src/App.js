@@ -4,6 +4,7 @@ import Login from "./routes/Login";
 import Layout from "./components/Layout";
 import PublicPage from "./routes/PublicPage";
 import ProtectedPage from "./routes/ProtectedPage";
+import SingnUp from "./routes/SingnUp";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route path="/singnUp" element={<SingnUp />} />
         </Route>
       </Routes>
     </AuthProvider>
