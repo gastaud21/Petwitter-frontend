@@ -25,8 +25,8 @@ function Login() {
           display={["flex", "none"]}
           backgroundImage={"./backgroundDog.png"}
           height="262px"
-          maxW={"100vw"}
           backgroundRepeat="no-repeat"
+          backgroundSize="cover"
           flexDirection={"column"}
         >
           <Image
@@ -49,35 +49,31 @@ function Login() {
             <br />
             Conecte-se já.
           </Text>
-          {/*DESKTOP*/}
-          <Flex
-            display={["none", "flex"]}
-            backgroundImage={"./backgroundDog.png"}
-            backgroundRepeat="no-repeat"
-            width="100vw"
-            backgroundSize="cover"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Flex alignItems="center">
-              <Image
-                src="./pawSymbol.png"
-                alt="paw"
-                height="fit-content"
-                marginRight="24px"
-              />
-              <Text
-                color="white"
-                fontFamily="Open Sans, sans-serif"
-                fontSize="51.5px"
-                lineHeight="77px"
-                fontWeight="bold"
-              >
-                PETWITTER
-              </Text>
-            </Flex>
+        </Flex>
+        {/*DESKTOP*/}
+        <Flex
+          display={["none", "flex"]}
+          backgroundImage={"./backgroundDogDesktop.png"}
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+          width="60vw"
+          height="100vh"
+          justifyContent="center"
+        >
+          <Flex alignItems="center">
+            <Image src="./pawSymbolDesktop.png" alt="paw" marginRight="24px" />
+            <Text
+              color="white"
+              fontFamily="Open Sans, sans-serif"
+              fontSize="51.5px"
+              lineHeight="77px"
+              fontWeight="bold"
+            >
+              PETWITTER
+            </Text>
           </Flex>
         </Flex>
+        {/* */}
         <Flex flexDirection="column" display={["flex", "none"]}>
           <Text
             fontFamily="Open Sans, sans-serif"
@@ -88,7 +84,12 @@ function Login() {
           >
             Login
           </Text>
-          <FormControl margin="0 32px" display="flex" flexDirection="column">
+          <FormControl
+            margin="0 32px"
+            display="flex"
+            flexDirection="column"
+            width="auto"
+          >
             <FormLabel
               htmlFor="email"
               fontFamily="Open Sans, sans-serif"
@@ -101,7 +102,6 @@ function Login() {
             <Input
               id="email"
               type="email"
-              width="296px"
               placeholder="E-mail"
               fontFamily="Open Sans, sans-serif"
             />
@@ -118,13 +118,11 @@ function Login() {
             <Input
               id="password"
               type="password"
-              width="296px"
               placeholder="Senha"
               fontFamily="Open Sans, sans-serif"
             />
             <Button
               colorScheme="blue"
-              width="296px"
               margin="40px 0 24px 0"
               backgroundColor="#00ACC1"
               fontFamily="Open Sans, sans-serif"

@@ -12,7 +12,6 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<PublicPage />} />
-          <Route path="/login" element={<Login />} />
           <Route
             path="/protected"
             element={
@@ -21,8 +20,9 @@ function App() {
               </RequireAuth>
             }
           />
-          <Route path="/singnUp" element={<SingnUp />} />
         </Route>
+        <Route path="/singnUp" element={<SingnUp />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </AuthProvider>
   );
