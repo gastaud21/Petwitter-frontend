@@ -14,13 +14,15 @@ import {
 function SingnUp() {
   return (
     <ChakraProvider>
-      <Flex flexDirection="column">
+      <Flex flexDirection={["column", "row"]}>
+        {/*MOBILE*/}
         <Flex
           backgroundImage="./backgroundDog.png"
           height="143px"
           backgroundRepeat="no-repeat"
           backgroundSize="cover"
           backgroundPosition="center"
+          display={["flex", "none"]}
         >
           <Image
             src="./pawSymbol.png"
@@ -28,7 +30,35 @@ function SingnUp() {
             margin="45.95px 0 43.5px 31.94px"
           />
         </Flex>
-        <Flex flexDirection="column" margin="32px 32px 0 32px">
+        {/*DESKTOP*/}
+        <Flex
+          display={["none", "flex"]}
+          backgroundImage="./backgroundDogDesktop.png"
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+          backgroundPosition="center"
+          width="49vw"
+          height="100vh"
+        >
+          <Flex alignItems="center">
+            <Image src="./pawSymbolDesktop.png" alt="paw" marginRight="24px" />
+            <Text
+              color="white"
+              fontFamily="Open Sans, sans-serif"
+              fontSize="51.5px"
+              lineHeight="77px"
+              fontWeight="bold"
+            >
+              PETWITTER
+            </Text>
+          </Flex>
+        </Flex>
+        {/*MOBILE */}
+        <Flex
+          flexDirection="column"
+          margin="32px 32px 0 32px"
+          display={["flex", "none"]}
+        >
           <Text
             fontSize="24px"
             fontFamily="Open Sans, sans-serif"
@@ -118,11 +148,11 @@ function SingnUp() {
               fontSize="14px"
               width="inherit"
             >
-              Entrar
+              Cadastrar
             </Button>
             <Text fontFamily="Open Sans, sans-serif">Já possui cadastro?</Text>
             <Link
-              href="singUp"
+              href="login"
               fontFamily="Open Sans, sans-serif"
               color="#00ACC1"
               textDecoration="underline"
@@ -131,7 +161,131 @@ function SingnUp() {
             </Link>
           </FormControl>
         </Flex>
-        <Flex margin="57px 0 24px 0" justifyContent="center">
+        {/*DESKTOP*/}
+        <Flex
+          display={["none", "flex"]}
+          flexDirection="column"
+          width="51vw"
+          padding="51px 0 0 32px"
+          alignItems="center"
+        >
+          <Flex
+            flexDirection="column"
+            maxWidth="522px"
+            width="-webkit-fill-available"
+          >
+            <Image src="./paw-cyan-DESKTOP.png" width="fit-content" />
+            <Text
+              fontSize="20px"
+              fontFamily="Open Sans, sans-serif"
+              fontWeight="600"
+              lineHeight="32px"
+              color="#424242"
+              margin="32px 0 24px 0"
+            >
+              Cadastro
+            </Text>
+            <FormControl>
+              <FormLabel
+                htmlFor="name"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+                fontWeight="600"
+                lineHeight="16px"
+              >
+                Nome
+              </FormLabel>
+              <Input
+                id="name"
+                type="text"
+                placeholder="Nome"
+                fontFamily="Open Sans, sans-serif"
+                marginBottom="24px"
+              />
+              <FormLabel
+                htmlFor="email"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+                fontWeight="600"
+                lineHeight="16px"
+              >
+                E-mail
+              </FormLabel>
+              <Input
+                id="email"
+                type="email"
+                placeholder="E-mail"
+                fontFamily="Open Sans, sans-serif"
+                marginBottom="24px"
+              />
+              <FormLabel
+                htmlFor="user"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+                fontWeight="600"
+                lineHeight="16px"
+              >
+                Nome de usuário
+              </FormLabel>
+              <Input
+                id="user"
+                type="text"
+                placeholder="Ex : @carlos1234"
+                fontFamily="Open Sans, sans-serif"
+                marginBottom="24px"
+              />
+              <FormLabel
+                htmlFor="password"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+                fontWeight="600"
+                lineHeight="16px"
+              >
+                Senha
+              </FormLabel>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Senha"
+                fontFamily="Open Sans, sans-serif"
+              />
+              <FormHelperText
+                fontFamily="Open Sans, sans-serif"
+                fontSize="12px"
+                margin="4px 0 0 0"
+              >
+                Deve conter no mínimo um número e uma letra maiúscula
+              </FormHelperText>
+              <Button
+                colorScheme="blue"
+                margin="28px 0 16px 0"
+                backgroundColor="#00ACC1"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+                width="inherit"
+              >
+                Cadastrar
+              </Button>
+              <Text fontFamily="Open Sans, sans-serif">
+                Já possui cadastro?{" "}
+                <Link
+                  href="login"
+                  fontFamily="Open Sans, sans-serif"
+                  color="#00ACC1"
+                  textDecoration="underline"
+                >
+                  Faça login
+                </Link>
+              </Text>
+            </FormControl>
+          </Flex>
+        </Flex>
+        {/*MOBILE */}
+        <Flex
+          display={["flex", "none"]}
+          margin="57px 0 24px 0"
+          justifyContent="center"
+        >
           <Image src="./paw-symbol-cyan.png" marginRight="14.33px" />
           <Text
             fontFamily="Open Sans, sans-serif"

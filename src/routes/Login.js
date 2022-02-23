@@ -73,7 +73,7 @@ function Login() {
             </Text>
           </Flex>
         </Flex>
-        {/* */}
+        {/*MOBILE*/}
         <Flex flexDirection="column" display={["flex", "none"]}>
           <Text
             fontFamily="Open Sans, sans-serif"
@@ -134,9 +134,10 @@ function Login() {
               Ainda não possui uma conta?
             </Text>
             <Link
-              href="singUp"
+              href="singnUp"
               fontFamily="Open Sans, sans-serif"
               color="#00ACC1"
+              textDecoration="underline"
             >
               Cadastre-se
             </Link>
@@ -153,6 +154,97 @@ function Login() {
             >
               PETWITTER
             </Text>
+          </Flex>
+        </Flex>
+        {/*DESKTOP */}
+        <Flex
+          flexDirection="column"
+          display={["none", "flex"]}
+          padding="54px 0 0 0"
+          alignItems="center"
+          width="40vw"
+        >
+          <Flex
+            flexDirection="column"
+            maxWidth="368px"
+            width="-webkit-fill-available"
+          >
+            <Image src="./paw-cyan-DESKTOP.png" width="fit-content" />
+            <Text
+              fontFamily="Open Sans, sans-serif"
+              color="#00ACC1"
+              fontWeight="bold"
+              fontSize="36px"
+              lineHeight="49px"
+              padding="20px 0 32px 0"
+            >
+              Comece agora.
+              <br />
+              Conecte-se já.
+            </Text>
+            <Text
+              fontFamily="Open Sans, sans-serif"
+              color="#212121"
+              fontWeight="600"
+              fontSize="24px"
+              lineHeight="40px"
+              paddingBottom="32px"
+            >
+              Login
+            </Text>
+            <FormControl display="flex" flexDirection="column" width="auto">
+              <FormLabel
+                htmlFor="email"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+                fontWeight="600"
+                lineHeight="16px"
+              >
+                E-mail
+              </FormLabel>
+              <Input
+                id="email"
+                type="email"
+                placeholder="E-mail"
+                fontFamily="Open Sans, sans-serif"
+              />
+              <FormLabel
+                htmlFor="password"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+                fontWeight="600"
+                lineHeight="16px"
+                marginTop="32px"
+              >
+                Senha
+              </FormLabel>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Senha"
+                fontFamily="Open Sans, sans-serif"
+              />
+              <Button
+                colorScheme="blue"
+                margin="40px 0 24px 0"
+                backgroundColor="#00ACC1"
+                fontFamily="Open Sans, sans-serif"
+                fontSize="14px"
+              >
+                Entrar
+              </Button>
+              <Text fontFamily="Open Sans, sans-serif">
+                Ainda não possui uma conta?{" "}
+                <Link
+                  href="singnUp"
+                  fontFamily="Open Sans, sans-serif"
+                  color="#00ACC1"
+                  textDecoration="underline"
+                >
+                  Cadastre-se
+                </Link>
+              </Text>
+            </FormControl>
           </Flex>
         </Flex>
       </Flex>
