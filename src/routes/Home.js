@@ -154,9 +154,12 @@ function Home() {
           width="100vw"
           backgroundColor="white"
           display={["flex", "none"]}
+          justifyContent="center"
         >
-          <DrawerMenu userAvatar={tempData[0].photo} />
-          <Flex backgroundColor="grey" alignItems="center">
+          <Flex position="absolute" left="0" padding="6px 0 6px 16px">
+            <DrawerMenu userAvatar={tempData[0].photo} />
+          </Flex>
+          <Flex alignItems="center">
             <Image src="./pawCyanHeader.png" />
             <Text
               fontFamily="Open Sans, sans-serif"
@@ -182,11 +185,17 @@ function Home() {
               key={user.id}
             />
           ))}
-          <Flex justifyContent="flex-end" padding="0 16px 35px 0">
+          <Flex
+            justifyContent="flex-end"
+            padding="0 16px 22px 0"
+            position="fixed"
+            bottom="0"
+          >
             <DoTweetDrawer userAvatar={tempData[0].photo} />
           </Flex>
         </Container>
       </Flex>
+      {/*DESKTOP*/}
       <Grid display={["none", "grid"]} templateColumns="repeat(9, 1fr)">
         <GridItem colSpan={2}>
           <Flex flexDirection="column">
