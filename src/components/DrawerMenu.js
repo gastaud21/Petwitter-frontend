@@ -6,9 +6,12 @@ import {
   DrawerHeader,
   DrawerBody,
   Image,
+  Avatar,
+  Flex,
 } from "@chakra-ui/react";
 
-function DrawerMenu() {
+function DrawerMenu(props) {
+  const { userAvatar } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -19,11 +22,15 @@ function DrawerMenu() {
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">
+            <Flex justifyContent="center">
+              <Avatar src={userAvatar} size="lg" />
+            </Flex>
+          </DrawerHeader>
           <DrawerBody>
             <p>Home</p>
-            <p>Login</p>
-            <p>SingnUp</p>
+            <p>Meu perfil</p>
+            <p>Configurações</p>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

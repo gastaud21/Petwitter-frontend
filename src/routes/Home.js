@@ -1,16 +1,7 @@
-import {
-  Image,
-  Flex,
-  Text,
-  FormControl,
-  FormLabel,
-  Input,
-  Button,
-  extendTheme,
-  Link,
-} from "@chakra-ui/react";
+import { Image, Flex, Text } from "@chakra-ui/react";
 import DrawerMenu from "../components/DrawerMenu";
 import Tweet from "../components/Tweet";
+import DoTweetDrawer from "../components/DoTweetDrawer";
 
 function Home() {
   const tempData = [
@@ -151,7 +142,7 @@ function Home() {
         width="100vw"
         backgroundColor="white"
       >
-        <DrawerMenu />
+        <DrawerMenu userAvatar={tempData[0].photo} />
         <Flex backgroundColor="grey" alignItems="center">
           <Image src="./pawCyanHeader.png" />
           <Text
@@ -176,6 +167,9 @@ function Home() {
             key={user.id}
           />
         ))}
+        <Flex justifyContent="flex-end" padding="0 16px 35px 0">
+          <DoTweetDrawer userAvatar={tempData[0].photo} />
+        </Flex>
       </div>
     </Flex>
   );
