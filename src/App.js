@@ -5,11 +5,15 @@ import Layout from "./components/Layout";
 import PublicPage from "./routes/PublicPage";
 import ProtectedPage from "./routes/ProtectedPage";
 import SingnUp from "./routes/SingnUp";
+import Home from "./routes/Home";
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
+        <Route path="/singnUp" element={<SingnUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route element={<Layout />}>
           <Route path="/" element={<PublicPage />} />
           <Route
@@ -21,8 +25,6 @@ function App() {
             }
           />
         </Route>
-        <Route path="/singnUp" element={<SingnUp />} />
-        <Route path="/login" element={<Login />} />
       </Routes>
     </AuthProvider>
   );
