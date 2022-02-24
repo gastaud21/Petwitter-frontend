@@ -1,4 +1,14 @@
-import { Image, Flex, Text } from "@chakra-ui/react";
+import {
+  Image,
+  Flex,
+  Text,
+  Grid,
+  GridItem,
+  Container,
+  Textarea,
+  Avatar,
+  Button,
+} from "@chakra-ui/react";
 import DrawerMenu from "../components/DrawerMenu";
 import Tweet from "../components/Tweet";
 import DoTweetDrawer from "../components/DoTweetDrawer";
@@ -133,45 +143,83 @@ function Home() {
     },
   ];
   return (
-    <Flex flexDirection="column">
-      <Flex
-        padding="10px 0 10px 16px"
-        position="fixed"
-        zIndex="999"
-        boxShadow="0px 2px 4px 0px #21212133"
-        width="100vw"
-        backgroundColor="white"
-      >
-        <DrawerMenu userAvatar={tempData[0].photo} />
-        <Flex backgroundColor="grey" alignItems="center">
-          <Image src="./pawCyanHeader.png" />
-          <Text
-            fontFamily="Open Sans, sans-serif"
-            color="cyan.400"
-            fontSize="14px"
-            fontWeight="bold"
-            paddingLeft="9.33px"
-          >
-            PETWITTER
-          </Text>
+    <div>
+      {/*MOBILE*/}
+      <Flex flexDirection="column">
+        <Flex
+          padding="10px 0 10px 16px"
+          position="fixed"
+          zIndex="999"
+          boxShadow="0px 2px 4px 0px #21212133"
+          width="100vw"
+          backgroundColor="white"
+          display={["flex", "none"]}
+        >
+          <DrawerMenu userAvatar={tempData[0].photo} />
+          <Flex backgroundColor="grey" alignItems="center">
+            <Image src="./pawCyanHeader.png" />
+            <Text
+              fontFamily="Open Sans, sans-serif"
+              color="cyan.400"
+              fontSize="14px"
+              fontWeight="bold"
+              paddingLeft="9.33px"
+            >
+              PETWITTER
+            </Text>
+          </Flex>
         </Flex>
+        {/*MOBILE*/}
+
+        <Container padding="48px 0 0 0" display={["block", "none"]}>
+          {tempData?.map((user) => (
+            <Tweet
+              username={user.username}
+              name={user.name}
+              userImage={user.photo}
+              post={user.tweet}
+              postTime={user.postTime}
+              key={user.id}
+            />
+          ))}
+          <Flex justifyContent="flex-end" padding="0 16px 35px 0">
+            <DoTweetDrawer userAvatar={tempData[0].photo} />
+          </Flex>
+        </Container>
       </Flex>
-      <div style={{ paddingTop: "48px" }}>
-        {tempData?.map((user) => (
-          <Tweet
-            username={user.username}
-            name={user.name}
-            userImage={user.photo}
-            post={user.tweet}
-            postTime={user.postTime}
-            key={user.id}
-          />
-        ))}
-        <Flex justifyContent="flex-end" padding="0 16px 35px 0">
-          <DoTweetDrawer userAvatar={tempData[0].photo} />
-        </Flex>
-      </div>
-    </Flex>
+      <Grid display={["none", "grid"]} templateColumns="repeat(9, 1fr)">
+        <GridItem colSpan={2}>
+          <Flex flexDirection="column">
+            <Flex alignItems="center">
+              <Image src="./paw-cyan-grid.png" />
+              <Text
+                color="cyan.400"
+                fontSize="27px"
+                fontWeight="bold"
+                paddingLeft="18px"
+                fontFamily="Open Sans, sans-serif"
+              >
+                PETWITTER
+              </Text>
+            </Flex>
+          </Flex>
+        </GridItem>
+        <GridItem colSpan={5}>
+          <Container>
+            <Flex flexDirection="column">
+              <Flex>
+                <Avatar src={tempData[0].photo} size="md" />
+                <Textarea placeholder="O que está acontecendo?" resize="none" />
+              </Flex>
+              <Flex justifyContent="flex-end">
+                <Button>Petwittar</Button>
+              </Flex>
+            </Flex>
+          </Container>
+        </GridItem>
+        <GridItem colSpan={2} />
+      </Grid>
+    </div>
   );
 }
 
