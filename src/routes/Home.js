@@ -200,7 +200,7 @@ function Home() {
       <Grid display={["none", "grid"]} templateColumns="repeat(9, 1fr)">
         <GridItem colSpan={2}>
           <Flex flexDirection="column">
-            <Flex alignItems="center">
+            <Flex alignItems="center" justifyContent="center" padding="24px 0">
               <Image src="./paw-cyan-grid.png" />
               <Text
                 color="cyan.400"
