@@ -6,6 +6,7 @@ import PublicPage from "./routes/PublicPage";
 import ProtectedPage from "./routes/ProtectedPage";
 import SingnUp from "./routes/SingnUp";
 import Home from "./routes/Home";
+import MyProfile from "./routes/myProfile";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/singnUp" element={<SingnUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/myProfile" element={<MyProfile />} />
         <Route element={<Layout />}>
           <Route path="/" element={<PublicPage />} />
           <Route

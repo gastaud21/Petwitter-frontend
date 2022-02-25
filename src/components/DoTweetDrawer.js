@@ -20,7 +20,7 @@ function DoTweetDrawer(props) {
       <button onClick={onOpen}>
         <Image src="./newTweet.png" />
       </button>
-      <Drawer placement="bottom" onClose={onClose} isOpen={isOpen} size="md">
+      <Drawer placement="bottom" onClose={onClose} isOpen={isOpen} size="full">
         <DrawerOverlay />
         <DrawerContent borderRadius="10px 10px 0 0">
           <DrawerHeader borderBottomWidth="1px" padding="8px 8px 8px 16px">
