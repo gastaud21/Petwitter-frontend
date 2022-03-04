@@ -8,9 +8,16 @@ import {
   Button,
   FormHelperText,
   Link,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 
 function SingnUp() {
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+
   return (
     <Flex flexDirection={["column", "row"]}>
       {/*MOBILE*/}
@@ -125,12 +132,27 @@ function SingnUp() {
           >
             Senha
           </FormLabel>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Senha"
-            fontFamily="Open Sans, sans-serif"
-          />
+          <InputGroup>
+            <Input
+              width={["100%"]}
+              height={["40px"]}
+              name="password"
+              type={show ? "text" : "password"}
+              placeholder="Senha"
+            />
+            <InputRightElement width="4.5rem">
+              <Button
+                variant={"unstyled"}
+                outline={"none"}
+                height={"30px"}
+                color={"black"}
+                backgroundColor={"white"}
+                onClick={handleClick}
+              >
+                {show ? <ViewIcon /> : <ViewOffIcon />}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
           <FormHelperText
             fontFamily="Open Sans, sans-serif"
             fontSize="10px"
@@ -241,12 +263,27 @@ function SingnUp() {
             >
               Senha
             </FormLabel>
-            <Input
-              id="password"
-              type="password"
-              placeholder="Senha"
-              fontFamily="Open Sans, sans-serif"
-            />
+            <InputGroup>
+              <Input
+                width={["100%"]}
+                height={["40px"]}
+                name="password"
+                type={show ? "text" : "password"}
+                placeholder="Senha"
+              />
+              <InputRightElement width="4.5rem">
+                <Button
+                  variant={"unstyled"}
+                  outline={"none"}
+                  height={"30px"}
+                  color={"black"}
+                  backgroundColor={"white"}
+                  onClick={handleClick}
+                >
+                  {show ? <ViewIcon /> : <ViewOffIcon />}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
             <FormHelperText
               fontFamily="Open Sans, sans-serif"
               fontSize="12px"

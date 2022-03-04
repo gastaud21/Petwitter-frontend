@@ -8,9 +8,17 @@ import {
   Button,
   extendTheme,
   Link,
+  InputGroup,
+  InputRightElement,
+  IconButton,
 } from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 
 function Login() {
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+
   const theme = extendTheme({
     //nao tá pegando o tema por default
     fontFamily: "Open Sans, sans-serif",
@@ -113,12 +121,27 @@ function Login() {
           >
             Senha
           </FormLabel>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Senha"
-            fontFamily="Open Sans, sans-serif"
-          />
+          <InputGroup>
+            <Input
+              width={["100%"]}
+              height={["40px"]}
+              name="password"
+              type={show ? "text" : "password"}
+              placeholder="Senha"
+            />
+            <InputRightElement width="4.5rem">
+              <Button
+                variant={"unstyled"}
+                outline={"none"}
+                height={"30px"}
+                color={"black"}
+                backgroundColor={"white"}
+                onClick={handleClick}
+              >
+                {show ? <ViewIcon /> : <ViewOffIcon />}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
           <Button
             colorScheme="blue"
             margin="40px 0 24px 0"
@@ -216,12 +239,27 @@ function Login() {
             >
               Senha
             </FormLabel>
-            <Input
-              id="password"
-              type="password"
-              placeholder="Senha"
-              fontFamily="Open Sans, sans-serif"
-            />
+            <InputGroup>
+              <Input
+                width={["100%"]}
+                height={["40px"]}
+                name="password"
+                type={show ? "text" : "password"}
+                placeholder="Senha"
+              />
+              <InputRightElement width="4.5rem">
+                <Button
+                  variant={"unstyled"}
+                  outline={"none"}
+                  height={"30px"}
+                  color={"black"}
+                  backgroundColor={"white"}
+                  onClick={handleClick}
+                >
+                  {show ? <ViewIcon /> : <ViewOffIcon />}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
             <Button
               colorScheme="blue"
               margin="40px 0 24px 0"
