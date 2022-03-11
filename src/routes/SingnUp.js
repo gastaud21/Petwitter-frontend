@@ -44,6 +44,7 @@ function SingnUp() {
         backgroundPosition="center"
         width="49vw"
         height="100vh"
+        justifyContent="center"
       >
         <Flex alignItems="center">
           <Image src="./pawSymbolDesktop.png" alt="paw" marginRight="24px" />

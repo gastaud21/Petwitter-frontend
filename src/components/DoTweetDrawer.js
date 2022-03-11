@@ -22,7 +22,7 @@ function DoTweetDrawer(props) {
       </button>
       <Drawer placement="bottom" onClose={onClose} isOpen={isOpen} size="full">
         <DrawerOverlay />
-        <DrawerContent borderRadius="10px 10px 0 0">
+        <DrawerContent borderRadius="10px 10px 0 0" top="35px">
           <DrawerHeader borderBottomWidth="1px" padding="8px 8px 8px 16px">
             <Flex justifyContent="space-between">
               <button
