@@ -8,12 +8,24 @@ import {
   Textarea,
   Avatar,
   Button,
+  FormControl,
 } from "@chakra-ui/react";
 import DrawerMenu from "../components/DrawerMenu";
 import Tweet from "../components/Tweet";
 import DoTweetDrawer from "../components/DoTweetDrawer";
+import { useEffect, useState } from "react";
+import { getAllPetweets, postPetweet } from "../services/petweets";
+import { useChange } from "../context/petweetChange-context";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function Home() {
+  const [petweets, setPetweets] = useState([]);
+  const [textLenght, setTextLenght] = useState(0);
+  const { petweetsChange, setPetweetsChange } = useChange();
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
   const tempData = [
     {
       id: 1,
@@ -33,20 +45,43 @@ function Home() {
       username: "DuckynhoBrabo",
       postTime: "20s",
     },
-    {
-      id: 3,
-      name: "Goddard",
-      tweet: "Au au",
-      photo:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF7xP656kLgaWjtSGvaapHiGV3Xlf64rNpxg&usqp=CAU",
-      username: "The_GODdard",
-      postTime: "20s",
-    },
   ];
 
-  // const tempData2 = asyn () => {
-  //   const
-  // }
+  const handleChange = (event) => {
+    let inputValue = event.target.value;
+    setTextLenght(inputValue.length);
+    console.log(textLenght);
+  };
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setIsLoading(true);
+    const formData = new FormData(event.target);
+    const content = formData.get("content");
+
+    try {
+      await postPetweet({ content });
+    } catch (error) {
+      console.log(error);
+    }
+    setPetweetsChange(!petweetsChange);
+    setIsLoading(false);
+    event.target.reset();
+  }
+
+  useEffect(() => {
+    try {
+      const request = async () => {
+        const response = await getAllPetweets({ page, perPage: 10 });
+        setPetweets(petweets.concat(response.data.petweets));
+        setHasMore(page < response.data.pagination.pageCount);
+      };
+      request();
+    } catch (error) {
+      console.log(error);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [petweetsChange, page]);
 
   return (
     <div>
@@ -193,17 +228,35 @@ function Home() {
               boxShadow="0px 10px 0px #E7ECF0"
               padding="34px 30px 25px 27px"
             >
-              <Flex>
-                <Avatar src={tempData[0].photo} size="md" />
-                <Textarea
-                  placeholder="O que está acontecendo?"
-                  resize="none"
-                  border="none"
-                />
-              </Flex>
-              <Flex justifyContent="flex-end">
-                <Button>Petwittar</Button>
-              </Flex>
+              <FormControl as={"form"} onSubmit={handleSubmit}>
+                <Flex>
+                  <Avatar src={tempData[0].photo} size="md" />
+                  <Textarea
+                    placeholder="O que está acontecendo?"
+                    resize="none"
+                    border="none"
+                    name="content"
+                    onChange={handleChange}
+                  />
+                </Flex>
+                <Flex justifyContent="flex-end">
+                  <Text
+                    color={"#828282"}
+                    fontFamily="Open Sans, sans-serif"
+                    marginRight="8px"
+                    alignSelf="center"
+                  >
+                    {textLenght}/140
+                  </Text>
+                  <Button
+                    isLoading={isLoading}
+                    isDisabled={textLenght !== 0 ? false : true}
+                    type="submit"
+                  >
+                    Petwittar
+                  </Button>
+                </Flex>
+              </FormControl>
             </Flex>
             {tempData?.map((user) => (
               <Tweet

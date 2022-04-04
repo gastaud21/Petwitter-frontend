@@ -10,11 +10,21 @@ import {
   Button,
   Avatar,
   Textarea,
+  Text,
 } from "@chakra-ui/react";
+import { useState } from "react";
 
 function DoTweetDrawer(props) {
   const { userAvatar } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [textLenght, setTextLenght] = useState(0);
+
+  const handleChange = (event) => {
+    let inputValue = event.target.value;
+    setTextLenght(inputValue.length);
+    console.log(textLenght);
+  };
+
   return (
     <>
       <button onClick={onOpen}>
@@ -35,13 +45,25 @@ function DoTweetDrawer(props) {
               >
                 Cancelar
               </button>
-              <Button
-                fontFamily="Open Sans, sans-serif"
-                borderRadius="10px"
-                opacity="0.4"
-              >
-                Petwittar
-              </Button>
+              <Flex>
+                <Text
+                  color={"#828282"}
+                  fontFamily="Open Sans, sans-serif"
+                  marginRight="14px"
+                  alignSelf="center"
+                  fontSize="14px"
+                  fontWeight="400"
+                >
+                  {textLenght}/140
+                </Text>
+                <Button
+                  fontFamily="Open Sans, sans-serif"
+                  borderRadius="10px"
+                  opacity="0.4"
+                >
+                  Petwittar
+                </Button>
+              </Flex>
             </Flex>
           </DrawerHeader>
           <DrawerBody padding="6px 16px">
@@ -52,6 +74,8 @@ function DoTweetDrawer(props) {
                 resize="none"
                 border="none"
                 padding="8px"
+                name="content"
+                onChange={handleChange}
               />
             </Flex>
           </DrawerBody>

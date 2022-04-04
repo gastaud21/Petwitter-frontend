@@ -13,10 +13,28 @@ import {
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import { useAuth } from "../context/auth-context";
+import { Link as ReachLink, useNavigate } from "react-router-dom";
 
 function Login() {
   const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const handleClick = () => setShow(!show);
+  const navigate = useNavigate();
+  const { signin } = useAuth();
+
+  async function handleSubmit(event) {
+    setIsLoading(true);
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    try {
+      await signin({ email, password });
+      setIsLoading(false);
+      navigate("/home", { replace: true });
+    } catch (error) {}
+  }
 
   const theme = extendTheme({
     //nao tá pegando o tema por default
@@ -94,6 +112,8 @@ function Login() {
           display="flex"
           flexDirection="column"
           width="auto"
+          as={"form"}
+          onSubmit={handleSubmit}
         >
           <FormLabel
             htmlFor="email"
@@ -105,7 +125,7 @@ function Login() {
             E-mail
           </FormLabel>
           <Input
-            id="email"
+            name="email"
             type="email"
             placeholder="E-mail"
             fontFamily="Open Sans, sans-serif"
@@ -147,6 +167,8 @@ function Login() {
             backgroundColor="#00ACC1"
             fontFamily="Open Sans, sans-serif"
             fontSize="14px"
+            isLoading={isLoading}
+            type={"submit"}
           >
             Entrar
           </Button>
@@ -212,7 +234,13 @@ function Login() {
           >
             Login
           </Text>
-          <FormControl display="flex" flexDirection="column" width="auto">
+          <FormControl
+            display="flex"
+            flexDirection="column"
+            width="auto"
+            onSubmit={handleSubmit}
+            as={"form"}
+          >
             <FormLabel
               htmlFor="email"
               fontFamily="Open Sans, sans-serif"
@@ -223,7 +251,7 @@ function Login() {
               E-mail
             </FormLabel>
             <Input
-              id="email"
+              name="email"
               type="email"
               placeholder="E-mail"
               fontFamily="Open Sans, sans-serif"
@@ -265,6 +293,8 @@ function Login() {
               backgroundColor="#00ACC1"
               fontFamily="Open Sans, sans-serif"
               fontSize="14px"
+              isLoading={isLoading}
+              type={"submit"}
             >
               Entrar
             </Button>
